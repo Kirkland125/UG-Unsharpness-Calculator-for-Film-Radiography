@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UG (Unsharpness) Calculator</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="bg-orb bg-orb--1"></div>
+  <div class="bg-orb bg-orb--2"></div>
+  <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle dark mode" title="Toggle dark mode">🌙</button>
+
+  <div class="page">
+    <main class="card">
+      <header class="card__header">
+        <h1>Unsharpness (U<sub>G</sub>) Calculator</h1>
+        <p class="subtitle">U<sub>G</sub> = f &times; d / D</p>
+      </header>
+
+      <form id="ug-form" class="form" novalidate>
+        <div class="field">
+          <label for="focal-spot">Focal Spot Size (f)</label>
+          <div class="input-row">
+            <input type="number" id="focal-spot" step="any" min="0" placeholder="e.g. 2" required />
+            <select id="focal-spot-unit" class="unit-select" aria-label="Focal spot size unit">
+              <option value="mm">mm</option>
+              <option value="in">inches</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="object-film">Object-to-Film Distance (d)</label>
+          <div class="input-row">
+            <input type="number" id="object-film" step="any" min="0" placeholder="e.g. 25" required />
+            <select id="object-film-unit" class="unit-select" aria-label="Object to film distance unit">
+              <option value="mm">mm</option>
+              <option value="in">inches</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="source-object">Source-to-Object Distance (D)</label>
+          <div class="input-row">
+            <input type="number" id="source-object" step="any" min="0" placeholder="e.g. 500" required />
+            <select id="source-object-unit" class="unit-select" aria-label="Source to object distance unit">
+              <option value="mm">mm</option>
+              <option value="in">inches</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="actions">
+          <button type="submit" class="btn btn--primary">Calculate</button>
+          <button type="reset" class="btn btn--secondary" id="reset-btn">Reset</button>
+        </div>
+      </form>
+
+      <section id="result" class="result" hidden>
+        <div class="result__label">Geometric Unsharpness</div>
+        <div class="result__value">
+          <span id="result-mm">0.00</span> mm
+          <span class="result__divider">/</span>
+          <span id="result-in">0.00</span> in
+        </div>
+      </section>
+
+      <p id="error" class="error" hidden></p>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

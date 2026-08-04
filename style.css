@@ -19,6 +19,8 @@
   --shadow: 0 20px 50px -15px rgba(15, 23, 42, 0.4), 0 2px 8px rgba(15, 23, 42, 0.08);
   --blur: 18px;
   --focus-ring: rgba(3, 105, 161, 0.25);
+  --selection-bg: #0369a1;
+  --selection-text: #ffffff;
 }
 
 [data-theme="dark"] {
@@ -40,21 +42,30 @@
   --btn-secondary-text: #eef2f8;
   --shadow: 0 20px 50px -15px rgba(0, 0, 0, 0.6), 0 2px 8px rgba(0, 0, 0, 0.3);
   --focus-ring: rgba(56, 189, 248, 0.3);
+  --selection-bg: #38bdf8;
+  --selection-text: #05070d;
 }
 
 * {
   box-sizing: border-box;
 }
 
+::selection {
+  background: var(--selection-bg);
+  color: var(--selection-text);
+}
+
 body {
   margin: 0;
   min-height: 100vh;
+  min-height: 100dvh;
   font-family: "Segoe UI", system-ui, -apple-system, "Inter", Roboto, Helvetica, Arial, sans-serif;
   color: var(--text-primary);
   background: linear-gradient(135deg, var(--bg-1), var(--bg-2) 50%, var(--bg-3));
   background-attachment: fixed;
   overflow-x: hidden;
   transition: background 0.4s ease, color 0.3s ease;
+  -webkit-text-size-adjust: 100%;
 }
 
 .bg-orb {
@@ -89,13 +100,18 @@ body {
   align-items: center;
   justify-content: center;
   min-height: 100vh;
+  min-height: 100dvh;
   padding: 24px;
+  padding-top: max(24px, env(safe-area-inset-top));
+  padding-bottom: max(24px, env(safe-area-inset-bottom));
+  padding-left: max(24px, env(safe-area-inset-left));
+  padding-right: max(24px, env(safe-area-inset-right));
 }
 
 .theme-toggle {
   position: fixed;
-  top: 20px;
-  right: 20px;
+  top: max(20px, env(safe-area-inset-top));
+  right: max(20px, env(safe-area-inset-right));
   z-index: 2;
   width: 44px;
   height: 44px;
@@ -222,8 +238,10 @@ input[type="number"]::-webkit-inner-spin-button {
 }
 
 .unit-select {
+  flex-shrink: 0;
+  min-width: 76px;
   padding: 12px 10px;
-  font-size: 0.95rem;
+  font-size: 1rem;
   border: 1.5px solid var(--input-border);
   border-radius: 12px;
   background: var(--input-bg);
@@ -346,7 +364,30 @@ input[type="number"]::-webkit-inner-spin-button {
   }
 
   .theme-toggle {
-    top: 14px;
-    right: 14px;
+    top: max(14px, env(safe-area-inset-top));
+    right: max(14px, env(safe-area-inset-right));
   }
 }
+
+@media (max-width: 360px) {
+  .page {
+    padding: 16px;
+  }
+
+  .card {
+    padding: 24px 16px;
+  }
+
+  .input-row {
+    gap: 6px;
+  }
+
+  .unit-select {
+    padding: 12px 6px;
+  }
+
+  .actions {
+    flex-direction: column;
+  }
+}
+

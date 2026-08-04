@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>UG (Unsharpness) Calculator</title>
   <link rel="stylesheet" href="style.css" />
 </head>
@@ -15,14 +15,14 @@
     <main class="card">
       <header class="card__header">
         <h1>Unsharpness (U<sub>G</sub>) Calculator</h1>
-        <p class="subtitle">U<sub>G</sub> = f &times; d / D</p>
+        <p class="subtitle">U<sub>G</sub> = f &times; b / a</p>
       </header>
 
       <form id="ug-form" class="form" novalidate>
         <div class="field">
           <label for="focal-spot">Focal Spot Size (f)</label>
           <div class="input-row">
-            <input type="number" id="focal-spot" step="any" min="0" placeholder="e.g. 2" required />
+            <input type="number" id="focal-spot" inputmode="decimal" step="any" min="0" placeholder="e.g. 2" required />
             <select id="focal-spot-unit" class="unit-select" aria-label="Focal spot size unit">
               <option value="mm">mm</option>
               <option value="in">inches</option>
@@ -31,9 +31,9 @@
         </div>
 
         <div class="field">
-          <label for="object-film">Object-to-Film Distance (d)</label>
+          <label for="object-film">Object-to-Film Distance (b)</label>
           <div class="input-row">
-            <input type="number" id="object-film" step="any" min="0" placeholder="e.g. 25" required />
+            <input type="number" id="object-film" inputmode="decimal" step="any" min="0" placeholder="e.g. 25" required />
             <select id="object-film-unit" class="unit-select" aria-label="Object to film distance unit">
               <option value="mm">mm</option>
               <option value="in">inches</option>
@@ -42,9 +42,9 @@
         </div>
 
         <div class="field">
-          <label for="source-object">Source-to-Object Distance (D)</label>
+          <label for="source-object">Source-to-Object Distance (a)</label>
           <div class="input-row">
-            <input type="number" id="source-object" step="any" min="0" placeholder="e.g. 500" required />
+            <input type="number" id="source-object" inputmode="decimal" step="any" min="0" placeholder="e.g. 500" required />
             <select id="source-object-unit" class="unit-select" aria-label="Source to object distance unit">
               <option value="mm">mm</option>
               <option value="in">inches</option>
